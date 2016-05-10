@@ -1,4 +1,5 @@
-import org.apache.spark.mllib.classification.NaiveBayesModel
+package solution
+
 import org.apache.spark.mllib.evaluation.BinaryClassificationMetrics
 import org.apache.spark.mllib.linalg.Vectors
 import org.apache.spark.mllib.regression.LabeledPoint
