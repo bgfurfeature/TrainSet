@@ -26,13 +26,13 @@ object MainNB {
       LabeledPoint(label,Vectors.dense(features))
     }
 
-    val splitData = data.randomSplit(Array(0.8,0.2))
+    val splitData = data // .randomSplit(Array(0.8,0.2))
     // 使用交叉验证法训练数据和检验数据
-    val trainData = splitData(0).cache()
-    val testData = splitData(1).cache()
+    val trainData = data // splitData(0).cache()
+    val testData = data // splitData(1).cache()
 
 
-    val nbResult  = Seq(0.001,0.01,0.1,1.0,10.0).map { param =>
+    /*val nbResult  = Seq(0.0001,0.001,0.01,0.1,1.0,10.0).map { param =>
       val nbModel = DigitRecognizer.trainNBWithParams(trainData,param,"multinomial")
       val predictResult =  testData.map { labeledPoint =>
         val predicted = nbModel.predict(labeledPoint.features)
@@ -45,7 +45,7 @@ object MainNB {
 
     nbResult.foreach { case (param,acc) =>
       println(f"nb model with lambda:$param,modelTpye:multinomial,auc:${acc * 100}")
-    }
+    }*/
 
     val nbBestModel = DigitRecognizer.trainNBWithParams(data,0.001,"multinomial")
     // predict test.csv filedata
@@ -55,7 +55,7 @@ object MainNB {
       val label = nbBestModel.predict(Vectors.dense(features))
       label.toInt.toString
     }
-    val arr = testLabels.zipWithIndex().map{x => (x._2 + 1 +",\""+x._1+"\"")}.collect()
+    val arr = testLabels.zipWithIndex().map{x => x._2 + 1 +",\""+x._1+"\""}.collect()
     FileUtil.writeToFile(args(2),arr)
   }
 }
