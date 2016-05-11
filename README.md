@@ -3,9 +3,9 @@ kaggle data train practice
 
 ## DT ##
 
-** 决策树和朴素贝叶斯不受特征标准化操作影响 **
+** 决策树和朴素贝叶斯不受特征标准化操作影响
 
-* Entropy 不纯度估计 *
+* Entropy 不纯度估计
 
 1,auc:81.63009429343607
 
@@ -21,7 +21,7 @@ kaggle data train practice
 
 20,auc:94.81586775302469
 
-* Gini 不纯度估计 *
+* Gini 不纯度估计
 
 param:1,auc:78.16593697447333
 
